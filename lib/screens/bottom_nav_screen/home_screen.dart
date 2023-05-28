@@ -1,8 +1,10 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:our_gazipur/screens/services_screen/services_screen.dart';
+import 'package:our_gazipur/utils/colors.dart';
 import 'package:our_gazipur/utils/constants.dart';
+import 'package:our_gazipur/utils/routes.dart';
 import 'package:our_gazipur/widgets/custom_text.dart';
+import 'package:our_gazipur/widgets/auto_scroll_text.dart';
 import 'package:our_gazipur/widgets/services_button.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -13,55 +15,27 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   List<String> headlines = [
-    'News Headline 1',
-    'News Headline 2',
-    'News Headline 3',
-    'News Headline 4',
-    'News Headline 5',
+    "আগামীকাল সকাল ১০টা থেকে বিকেল ৪টা পর্যন্ত করোনা ভাইরাস এর টিকা দেয়া হবে|",
+    "আগামীকাল সকাল ১০টা থেকে বিকেল ৪টা পর্যন্ত করোনা ভাইরাস এর টিকা দেয়া হবে|",
   ];
-
-  ScrollController _scrollController = ScrollController();
-  int _currentIndex = 0;
-  late Timer _timer;
-
-  @override
-  void initState() {
-    super.initState();
-    _startAutoScroll();
-  }
-
-  @override
-  void dispose() {
-    _stopAutoScroll();
-    _scrollController.dispose();
-    super.dispose();
-  }
-
-  void _startAutoScroll() {
-    _timer = Timer.periodic(const Duration(seconds: 3), (timer) {
-      if (_currentIndex < headlines.length - 1) {
-        _currentIndex++;
-      } else {
-        _currentIndex = 0;
-      }
-      _scrollController.animateTo(
-        _currentIndex * 56.0,
-        duration: const Duration(milliseconds: 500),
-        curve: Curves.easeInOut,
-      );
-    });
-  }
-
-  void _stopAutoScroll() {
-    _timer.cancel();
-  }
-
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+
+    List<Widget> headlineWidgets = headlines
+        .map(
+          (headline) => Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Text(
+              headline,
+              style: const TextStyle(fontSize: 18.0,color: primaryColor,fontWeight: FontWeight.bold),
+            ),
+          ),
+        )
+        .toList();
+
     return Scaffold(
       body: Column(
         children: [
@@ -120,11 +94,55 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: const [
-              ServicesButton(image: mosquito, text: 'মশা'),
-              ServicesButton(image: motorway, text: 'রাস্তা'),
-              ServicesButton(image: water, text: 'পানি'),
-              ServicesButton(image: public_toilet, text: 'পাবলিক টয়লেট'),
+            children: [
+              ServicesButton(
+                image: mosquito,
+                text: 'মশা',
+                onTap: () {
+                  nextPage(
+                      context: context,
+                      page: const ServicesScreen(
+                        title: 'মশা',
+                        image: mosquito,
+                      ));
+                },
+              ),
+              ServicesButton(
+                image: motorway,
+                text: 'রাস্তা',
+                onTap: () {
+                  nextPage(
+                      context: context,
+                      page: const ServicesScreen(
+                        title: 'রাস্তা',
+                        image: motorway,
+                      ));
+                },
+              ),
+              ServicesButton(
+                image: water,
+                text: 'পানি',
+                onTap: () {
+                  nextPage(
+                      context: context,
+                      page: const ServicesScreen(
+                        title: 'পানি',
+                        image: water,
+                      ));
+                },
+              ),
+              ServicesButton(
+                image: public_toilet,
+                text: 'পাবলিক টয়লেট',
+                onTap: () {
+                  nextPage(
+                      context: context,
+                      page: const ServicesScreen(
+                        title: 'পাবলিক টয়লেট',
+                        image: public_toilet,
+                      ));
+                },
+              ),
             ],
           ),
           const SizedBox(
@@ -132,17 +150,61 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: const [
-              ServicesButton(image: light, text: 'সড়ক বাতি'),
-              ServicesButton(image: ilegle, text: 'অবৈধ স্থাপনা'),
-              ServicesButton(image: sand_rain, text: 'জলাবদ্ধতা'),
-              ServicesButton(image: waste, text: 'আবর্জনা'),
+            children: [
+              ServicesButton(
+                image: light,
+                text: 'সড়ক বাতি',
+                onTap: () {
+                  nextPage(
+                      context: context,
+                      page: const ServicesScreen(
+                        title: 'সড়ক বাতি',
+                        image: light,
+                      ));
+                },
+              ),
+              ServicesButton(
+                image: ilegle,
+                text: 'অবৈধ স্থাপনা',
+                onTap: () {
+                  nextPage(
+                      context: context,
+                      page: const ServicesScreen(
+                        title: 'অবৈধ স্থাপনা',
+                        image: ilegle,
+                      ));
+                },
+              ),
+              ServicesButton(
+                image: sand_rain,
+                text: 'জলাবদ্ধতা',
+                onTap: () {
+                  nextPage(
+                      context: context,
+                      page: const ServicesScreen(
+                        title: 'জলাবদ্ধতা',
+                        image: sand_rain,
+                      ));
+                },
+              ),
+              ServicesButton(
+                image: waste,
+                text: 'আবর্জনা',
+                onTap: () {
+                  nextPage(
+                      context: context,
+                      page: const ServicesScreen(
+                        title: 'আবর্জনা',
+                        image: waste,
+                      ));
+                },
+              ),
             ],
           ),
           const SizedBox(
             height: 30,
           ),
-           Divider(
+          Divider(
             height: 10,
             thickness: 5.0,
             color: Colors.grey.shade200,
@@ -161,25 +223,54 @@ class _HomeScreenState extends State<HomeScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              _buildColumn(titleText: "সর্বমোট",number: '৩৫',color: const Color(0xFFF39893)),
-              _buildColumn(titleText: "নিস্পন্ন",number: '১৯',color: const Color(0xFFABD194)),
-              _buildColumn(titleText: "প্রক্রিয়াধীন",number: '৩৫',color: const Color(0xFFB88CBF)),
+              _buildColumn(
+                  titleText: "সর্বমোট",
+                  number: '৩৫',
+                  color: const Color(0xFFF39893)),
+              _buildColumn(
+                  titleText: "নিস্পন্ন",
+                  number: '১৯',
+                  color: const Color(0xFFABD194)),
+              _buildColumn(
+                  titleText: "প্রক্রিয়াধীন",
+                  number: '৩৫',
+                  color: const Color(0xFFB88CBF)),
             ],
           ),
-           Divider(thickness: 4,color: Colors.grey.shade200,),
-
+          Divider(
+            thickness: 4,
+            color: Colors.grey.shade200,
+          ),
+          Container(
+            padding: const EdgeInsets.only(top: 10, bottom: 10, left: 10),
+            child: AutoScrollText(
+              height: 24.0,
+              items: headlineWidgets,
+            ),
+          ),
+          Divider(
+            thickness: 4,
+            color: Colors.grey.shade200,
+          ),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            height: 200,
+            width: size.width,
+            child: Image.asset('assets/logos/Untitled-1.png'),
+          )
         ],
       ),
     );
   }
 
-  Column _buildColumn({required String titleText,required String number,Color? color}) {
+  Column _buildColumn(
+      {required String titleText, required String number, Color? color}) {
     return Column(
-      children:  [
+      children: [
         CustomText(text: titleText),
         Text(
           number,
-          style:  TextStyle(color: color, fontSize: 20),
+          style: TextStyle(color: color, fontSize: 20),
         )
       ],
     );

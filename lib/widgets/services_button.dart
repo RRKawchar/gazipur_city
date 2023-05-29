@@ -16,7 +16,7 @@ class ServicesButton extends StatelessWidget {
         children: [
 
             Image.asset(image,height: 50,),
-            CustomText(text: text)
+            CustomText(text: text,fontFamily: 'Sharif',)
         ],
       ),
     );

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:our_gazipur/screens/bottom_nav_screen/gcc_screen.dart';
 import 'package:our_gazipur/screens/bottom_nav_screen/home_screen.dart';
-import 'package:timeline_tile/timeline_tile.dart';
 
 const  List<Widget> pages=[
 HomeScreen(),
-Text("GCC"),
-Text("History"),
-Text("Others"),
+GCCScreen(),
+Center(child: Text("History not Available")),
+Center(child: Text("Coming Soon")),
 ];
 
 

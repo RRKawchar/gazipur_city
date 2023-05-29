@@ -30,7 +30,10 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: Text(
               headline,
-              style: const TextStyle(fontSize: 18.0,color: primaryColor,fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                  fontSize: 17.0,
+                  color: primaryColor,
+                  fontWeight: FontWeight.bold,fontFamily: 'Sharif'),
             ),
           ),
         )
@@ -57,6 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         size: 30,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
+                        fontFamily: 'Sharif',
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: 60),
@@ -65,6 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           size: 30,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
+                          fontFamily: 'Sharif',
                         ),
                       ),
                     ],
@@ -101,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   nextPage(
                       context: context,
-                      page: const ServicesScreen(
+                      page:  ServicesScreen(
                         title: 'মশা',
                         image: mosquito,
                       ));
@@ -113,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   nextPage(
                       context: context,
-                      page: const ServicesScreen(
+                      page: ServicesScreen(
                         title: 'রাস্তা',
                         image: motorway,
                       ));
@@ -125,7 +130,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   nextPage(
                       context: context,
-                      page: const ServicesScreen(
+                      page: ServicesScreen(
                         title: 'পানি',
                         image: water,
                       ));
@@ -137,7 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   nextPage(
                       context: context,
-                      page: const ServicesScreen(
+                      page: ServicesScreen(
                         title: 'পাবলিক টয়লেট',
                         image: public_toilet,
                       ));
@@ -157,7 +162,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   nextPage(
                       context: context,
-                      page: const ServicesScreen(
+                      page: ServicesScreen(
                         title: 'সড়ক বাতি',
                         image: light,
                       ));
@@ -169,7 +174,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   nextPage(
                       context: context,
-                      page: const ServicesScreen(
+                      page: ServicesScreen(
                         title: 'অবৈধ স্থাপনা',
                         image: ilegle,
                       ));
@@ -181,7 +186,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   nextPage(
                       context: context,
-                      page: const ServicesScreen(
+                      page: ServicesScreen(
                         title: 'জলাবদ্ধতা',
                         image: sand_rain,
                       ));
@@ -193,7 +198,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   nextPage(
                       context: context,
-                      page: const ServicesScreen(
+                      page: ServicesScreen(
                         title: 'আবর্জনা',
                         image: waste,
                       ));
@@ -214,6 +219,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           const CustomText(
             text: "সমাধান কাউন্টার",
+            fontFamily: 'Sharif',
             size: 20,
           ),
           const Divider(),
@@ -267,10 +273,10 @@ class _HomeScreenState extends State<HomeScreen> {
       {required String titleText, required String number, Color? color}) {
     return Column(
       children: [
-        CustomText(text: titleText),
+        CustomText(text: titleText,fontFamily: 'Sharif',),
         Text(
           number,
-          style: TextStyle(color: color, fontSize: 20),
+          style: TextStyle(color: color, fontSize: 20,fontFamily: 'Sharif'),
         )
       ],
     );

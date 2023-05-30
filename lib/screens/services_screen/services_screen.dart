@@ -21,7 +21,8 @@ class ServicesScreen extends StatefulWidget {
 
 class _ServicesScreenState extends State<ServicesScreen> {
   Uint8List? _file;
-  List<Uint8List> _selectedImages=[];
+  Uint8List? _file2;
+  Uint8List? _file3;
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -85,20 +86,28 @@ class _ServicesScreenState extends State<ServicesScreen> {
                   child: Column(
                     children: [
                       InkWell(
-                          onTap: () async {
-                            Uint8List file = await pickImage(ImageSource.gallery);
-                            setState(() {
-                              _selectedImages.add(file);
-                            });
-                          },
-
                           // onTap: () async {
-                          //   Uint8List file =
-                          //       await pickImage(ImageSource.gallery);
+                          //   Uint8List file = await pickImage(ImageSource.gallery);
                           //   setState(() {
-                          //     _file = file;
+                          //     _selectedImages.add(file);
                           //   });
                           // },
+
+                          onTap: () async {
+                            Uint8List file =
+                                await pickImage(ImageSource.gallery);
+                            if(file.isNotEmpty){
+                              setState(() {
+                                if(_file==null){
+                                  _file=file;
+                                }else if(_file2==null){
+                                  _file2=file;
+                                }else{
+                                  _file3=file;
+                                }
+                              });
+                            }
+                          },
                           child: const Icon(
                             Icons.cloud_upload_outlined,
                             size: 40,
@@ -119,60 +128,68 @@ class _ServicesScreenState extends State<ServicesScreen> {
               const SizedBox(
                 height: 20,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: _selectedImages.map((image) {
-                  return SizedBox(
-                    height: 92,
-                    width: 100,
-                    child: Image.memory(
-                      image,
-                      fit: BoxFit.cover,
-                    ),
-                  );
-                }).toList(),
-              ),
-
-
-
               // Row(
               //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              //   children: [
-              //     _file == null
-              //         ? Container(
-              //             height: 92,
-              //             width: 100,
-              //             child: Image.asset(
-              //               'assets/images/default_images.png',
-              //               fit: BoxFit.cover,
-              //             ))
-              //         : Container(
-              //             height: 90,
-              //             width: 100,
-              //             child: Image.memory(_file!,fit: BoxFit.cover,),
-              //           ),
-              //     const SizedBox(
-              //       width: 8,
-              //     ),
-              //     Container(
-              //         height: 92,
-              //         width: 100,
-              //         child: Image.asset(
-              //           'assets/images/default_images.png',
-              //           fit: BoxFit.cover,
-              //         )),
-              //     const SizedBox(
-              //       width: 8,
-              //     ),
-              //     Container(
-              //         height: 92,
-              //         width: 100,
-              //         child: Image.asset(
-              //           'assets/images/default_images.png',
-              //           fit: BoxFit.cover,
-              //         )),
-              //   ],
+              //   children: _selectedImages.map((image) {
+              //     return SizedBox(
+              //       height: 92,
+              //       width: 100,
+              //       child: Image.memory(
+              //         image,
+              //         fit: BoxFit.cover,
+              //       ),
+              //     );
+              //   }).toList(),
               // ),
+
+
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  _file == null
+                      ? Container(
+                          height: 92,
+                          width: 100,
+                          child: Image.asset(
+                            'assets/images/default_images.png',
+                            fit: BoxFit.cover,
+                          ))
+                      : Container(
+                          height: 90,
+                          width: 100,
+                          child: Image.memory(_file!,fit: BoxFit.cover,),
+                        ),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  _file2==null?Container(
+                      height: 92,
+                      width: 100,
+                      child: Image.asset(
+                        'assets/images/default_images.png',
+                        fit: BoxFit.cover,
+                      )):Container(
+                    height: 90,
+                    width: 100,
+                    child: Image.memory(_file2!,fit: BoxFit.cover,),
+                  ),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  _file3==null?Container(
+                      height: 92,
+                      width: 100,
+                      child: Image.asset(
+                        'assets/images/default_images.png',
+                        fit: BoxFit.cover,
+                      )):Container(
+                    height: 90,
+                    width: 100,
+                    child: Image.memory(_file3!,fit: BoxFit.cover,),
+                  ),
+                ],
+              ),
               const SizedBox(
                 height: 20,
               ),

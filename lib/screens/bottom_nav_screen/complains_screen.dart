@@ -1,4 +1,8 @@
+import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_file.dart';
+import 'package:intl/intl.dart';
+import 'package:jiffy/jiffy.dart';
 import 'package:our_gazipur/api_service/api_service.dart';
 import 'package:our_gazipur/model/complain_model.dart';
 import 'package:our_gazipur/model/problem_list.dart';
@@ -15,7 +19,7 @@ class ComplainScreen extends StatefulWidget {
 class _ComplainScreenState extends State<ComplainScreen> {
 List<ComplainModel> _complainList=[];
 
-bool isLoading=false;
+  bool isLoading=false;
   @override
   void initState() {
    getComplain();
@@ -45,6 +49,7 @@ bool isLoading=false;
            padding:const EdgeInsets.only(top: 30),
            itemCount: _complainList.length,
            itemBuilder: (context,index){
+
            return Padding(
              padding: const EdgeInsets.all(8.0),
              child: Container(
@@ -71,8 +76,12 @@ bool isLoading=false;
                  child: Column(
                    crossAxisAlignment: CrossAxisAlignment.start,
                    children: [
-                     CustomText(text: _complainList[index].category,color: Colors.white,fontWeight: FontWeight.bold,size: 30,fontFamily: 'Sharif',),
-                     CustomText(text: _complainList[index].description,color: Colors.white,fontWeight: FontWeight.bold,size: 15,fontFamily: 'Sharif',),
+                     Container(
+                         height: 100,
+                         width: double.infinity,
+                         child: CustomText(text: _complainList[index].description,color: Colors.white,fontWeight: FontWeight.bold,size: 25,fontFamily: 'Sharif',maxLines: 2,)),
+                     CustomText(text: DateFormat.yMMMd()
+                         .format(_complainList[index].createdAt.toLocal()),color: Colors.white,fontWeight: FontWeight.bold,size: 15,fontFamily: 'Sharif',),
                    ],
                  ),
                ),

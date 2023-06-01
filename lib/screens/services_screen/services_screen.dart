@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:our_gazipur/screens/services_screen/problem_details_screen.dart';
 import 'package:our_gazipur/utils/colors.dart';
+import 'package:our_gazipur/utils/constants.dart';
 import 'package:our_gazipur/utils/routes.dart';
 import 'package:our_gazipur/utils/utils.dart';
 import 'package:our_gazipur/widgets/custom_text.dart';
@@ -23,6 +24,9 @@ class _ServicesScreenState extends State<ServicesScreen> {
   Uint8List? _file;
   Uint8List? _file2;
   Uint8List? _file3;
+
+  String selectedItem="রাস্তায় অবনতি";
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -96,14 +100,14 @@ class _ServicesScreenState extends State<ServicesScreen> {
                           onTap: () async {
                             Uint8List file =
                                 await pickImage(ImageSource.gallery);
-                            if(file.isNotEmpty){
+                            if (file.isNotEmpty) {
                               setState(() {
-                                if(_file==null){
-                                  _file=file;
-                                }else if(_file2==null){
-                                  _file2=file;
-                                }else{
-                                  _file3=file;
+                                if (_file == null) {
+                                  _file = file;
+                                } else if (_file2 == null) {
+                                  _file2 = file;
+                                } else {
+                                  _file3 = file;
                                 }
                               });
                             }
@@ -142,8 +146,6 @@ class _ServicesScreenState extends State<ServicesScreen> {
               //   }).toList(),
               // ),
 
-
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -158,36 +160,49 @@ class _ServicesScreenState extends State<ServicesScreen> {
                       : Container(
                           height: 90,
                           width: 100,
-                          child: Image.memory(_file!,fit: BoxFit.cover,),
+                          child: Image.memory(
+                            _file!,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                   const SizedBox(
                     width: 8,
                   ),
-                  _file2==null?Container(
-                      height: 92,
-                      width: 100,
-                      child: Image.asset(
-                        'assets/images/default_images.png',
-                        fit: BoxFit.cover,
-                      )):Container(
-                    height: 90,
-                    width: 100,
-                    child: Image.memory(_file2!,fit: BoxFit.cover,),
-                  ),
+                  _file2 == null
+                      ? Container(
+                          height: 92,
+                          width: 100,
+                          child: Image.asset(
+                            'assets/images/default_images.png',
+                            fit: BoxFit.cover,
+                          ))
+                      : Container(
+                          height: 90,
+                          width: 100,
+                          child: Image.memory(
+                            _file2!,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                   const SizedBox(
                     width: 8,
                   ),
-                  _file3==null?Container(
-                      height: 92,
-                      width: 100,
-                      child: Image.asset(
-                        'assets/images/default_images.png',
-                        fit: BoxFit.cover,
-                      )):Container(
-                    height: 90,
-                    width: 100,
-                    child: Image.memory(_file3!,fit: BoxFit.cover,),
-                  ),
+                  _file3 == null
+                      ? Container(
+                          height: 92,
+                          width: 100,
+                          child: Image.asset(
+                            'assets/images/default_images.png',
+                            fit: BoxFit.cover,
+                          ))
+                      : Container(
+                          height: 90,
+                          width: 100,
+                          child: Image.memory(
+                            _file3!,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                 ],
               ),
               const SizedBox(
@@ -217,27 +232,34 @@ class _ServicesScreenState extends State<ServicesScreen> {
                 height: 10,
               ),
               Container(
-                  padding: const EdgeInsets.only(left: 10, right: 10),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: const Color(0xffECECEC)),
-                      borderRadius: BorderRadius.circular(10)),
-                  height: 40,
-                  width: size.width,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      CustomText(
-                        text: "রাস্তা পৃষ্টা",
-                        color: primaryColor,
-                        fontFamily: 'Sharif',
-                      ),
-                      Icon(
-                        Icons.keyboard_arrow_down_rounded,
-                        size: 30,
-                      )
-                    ],
-                  )),
+                padding: const EdgeInsets.only(left: 10, right: 10),
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    border: Border.all(color: const Color(0xffECECEC)),
+                    borderRadius: BorderRadius.circular(10)),
+                height: 40,
+                width: size.width,
+                child: DropdownButton<String>(
+                  value: selectedItem,
+                  icon: const Icon(Icons.keyboard_arrow_down_rounded),
+                  iconSize: 24,
+                  elevation: 16,
+                  style: const TextStyle(color: Colors.black),
+                  underline: Container(),
+                  onChanged: (String? newValue){
+                      setState(() {
+                        selectedItem=newValue!;
+                      });
+                      print("this is selected item : $selectedItem");
+                  },
+                  items: problemItem.map<DropdownMenuItem<String>>((String value){
+                      return DropdownMenuItem<String>(
+                        value: value,
+                          child: CustomText(text: value,)
+                      );
+                  }).toList(),
+                ),
+              ),
               const SizedBox(
                 height: 10,
               ),

@@ -39,6 +39,8 @@ dependencies:
   dotted_border: ^2.0.0+3
   timeline_tile: ^2.0.0
   image_picker: ^0.8.7+5
+  http: ^0.13.6
+  path_provider: ^2.0.15
 
 dev_dependencies:
   flutter_test:

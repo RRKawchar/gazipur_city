@@ -106,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   nextPage(
                       context: context,
-                      page:  ServicesScreen(
+                      page:  const ServicesScreen(
                         title: 'মশা',
                         image: mosquito,
                       ));
@@ -118,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   nextPage(
                       context: context,
-                      page: ServicesScreen(
+                      page: const ServicesScreen(
                         title: 'রাস্তা',
                         image: motorway,
                       ));
@@ -130,7 +130,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   nextPage(
                       context: context,
-                      page: ServicesScreen(
+                      page: const ServicesScreen(
                         title: 'পানি',
                         image: water,
                       ));
@@ -142,7 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   nextPage(
                       context: context,
-                      page: ServicesScreen(
+                      page: const ServicesScreen(
                         title: 'পাবলিক টয়লেট',
                         image: public_toilet,
                       ));
@@ -162,7 +162,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   nextPage(
                       context: context,
-                      page: ServicesScreen(
+                      page: const ServicesScreen(
                         title: 'সড়ক বাতি',
                         image: light,
                       ));
@@ -174,7 +174,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   nextPage(
                       context: context,
-                      page: ServicesScreen(
+                      page: const ServicesScreen(
                         title: 'অবৈধ স্থাপনা',
                         image: ilegle,
                       ));
@@ -186,7 +186,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   nextPage(
                       context: context,
-                      page: ServicesScreen(
+                      page: const ServicesScreen(
                         title: 'জলাবদ্ধতা',
                         image: sand_rain,
                       ));
@@ -198,7 +198,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   nextPage(
                       context: context,
-                      page: ServicesScreen(
+                      page: const ServicesScreen(
                         title: 'আবর্জনা',
                         image: waste,
                       ));

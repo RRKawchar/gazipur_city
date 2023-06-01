@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:our_gazipur/screens/bottom_nav_screen/gcc_screen.dart';
+import 'package:our_gazipur/screens/bottom_nav_screen/complains_screen.dart';
 import 'package:our_gazipur/screens/bottom_nav_screen/home_screen.dart';
 
 const List<Widget> pages = [
   HomeScreen(),
-  GCCScreen(),
-  Center(child: Text("History not Available")),
+  Center(child: Text("Not Available")),
+  ComplainScreen(),
   Center(child: Text("Coming Soon")),
 ];
 
@@ -22,6 +22,21 @@ const List<String> problemItem = [
   "কমিউনিটি বাজার",
   "পারিবারিক মানসম্পন্নতা",
 ];
+const List<String> wardList = [
+  "১",
+  "২",
+  "৩",
+  "৪",
+  "৫",
+  "৬",
+  "৭",
+  "৮",
+  "৯",
+  "১০",
+  "১১",
+];
+
+const String complainApi="https://app.zufaa.tech/our-gazipur/public/api/complain";
 
 const String mosquito = "assets/images/Mosquito.png";
 const String motorway = "assets/images/Motorway.png";

@@ -37,7 +37,7 @@ class _MainScreenState extends State<MainScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.list_alt),
-            label: 'History',
+            label: 'Complains',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.more_horiz),

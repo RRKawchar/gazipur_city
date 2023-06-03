@@ -164,7 +164,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
     );
   }
 
-  Row showImageContainer() {
+  Widget showImageContainer() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
@@ -173,7 +173,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
                 height: 92,
                 width: 100,
                 child: Image.asset(
-                  'assets/images/default_images.png',
+                  'assets/images/default.jpg',
                   fit: BoxFit.cover,
                 ))
             : SizedBox(
@@ -192,7 +192,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
                 height: 92,
                 width: 100,
                 child: Image.asset(
-                  'assets/images/default_images.png',
+                  'assets/images/default.jpg',
                   fit: BoxFit.cover,
                 ))
             : SizedBox(
@@ -211,7 +211,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
                 height: 92,
                 width: 100,
                 child: Image.asset(
-                  'assets/images/default_images.png',
+                  'assets/images/default.jpg',
                   fit: BoxFit.cover,
                 ))
             : SizedBox(
@@ -226,7 +226,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
     );
   }
 
-  DottedBorder _buildDottedBorder(Size size) {
+  Widget _buildDottedBorder(Size size) {
     return DottedBorder(
       color: Colors.black,
       strokeWidth: 1.5,

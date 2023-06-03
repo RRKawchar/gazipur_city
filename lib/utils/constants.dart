@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:our_gazipur/screens/bottom_nav_screen/complains_screen.dart';
+import 'package:our_gazipur/screens/bottom_nav_screen/complains/complains_screen.dart';
 import 'package:our_gazipur/screens/bottom_nav_screen/home_screen.dart';
 
 const List<Widget> pages = [
@@ -8,6 +8,14 @@ const List<Widget> pages = [
   ComplainScreen(),
   Center(child: Text("Coming Soon")),
 ];
+
+const List<String> imageList=[
+  'https://media.istockphoto.com/id/1317059852/photo/aedes-mosquitoe-is-sucking-blood-on-human-skin.jpg?s=612x612&w=0&k=20&c=FJoItD-SqroiLNBfnKfGD7kjOssT5P9JsYBt7vJSkTM=',
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTSyHm72zY_Tvo08DcseTbbsHc1Uakb3xxqmnLIYRwsPqSEv0c6C6atZN3EhBjgu7czRA&usqp=CAU',
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvi3fZwm260N_aoyM7VKAEl1CVNaa7FldrXJRNGgTzDuPEhKfcvUulkzpQCvu-hkB3rq4&usqp=CAU'
+];
+
+
 
 const List<String> problemItem = [
   "রাস্তায় অবনতি",

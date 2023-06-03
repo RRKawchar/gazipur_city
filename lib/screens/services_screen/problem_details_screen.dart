@@ -4,6 +4,8 @@ import 'package:our_gazipur/widgets/custom_text.dart';
 import 'package:our_gazipur/widgets/custom_timeline_tile.dart';
 
 class TimelineScreen extends StatelessWidget {
+  const TimelineScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;

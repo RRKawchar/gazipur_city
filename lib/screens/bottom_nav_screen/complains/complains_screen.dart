@@ -22,7 +22,7 @@ class _ComplainScreenState extends State<ComplainScreen> {
     super.initState();
   }
 
-  getComplain() async {
+  void getComplain() async {
     setState(() {
       isLoading = true;
     });

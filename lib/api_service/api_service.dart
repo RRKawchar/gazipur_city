@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
-
 import 'package:http/http.dart' as http;
 import 'package:our_gazipur/model/complain_model.dart';
 import 'package:our_gazipur/utils/constants.dart';
@@ -16,7 +15,7 @@ class ApiService {
     required String ward,
     required String opinion,
     required String userId,
-    required String address,
+    required String location,
     required Uint8List imageBytes,
   }) async {
     try {
@@ -26,7 +25,7 @@ class ApiService {
       request.fields['ward'] = ward;
       request.fields['description'] = opinion;
       request.fields['user_id'] = userId;
-      request.fields['address'] = address;
+      request.fields['location'] = location;
 
       var tempDir = await getTemporaryDirectory();
       var tempFile = await File('${tempDir.path}/temp_image.jpg').writeAsBytes(imageBytes);
@@ -43,6 +42,8 @@ class ApiService {
       request.files.add(imageUpload);
 
       var response = await request.send();
+
+       print("Kawchar :$response");
       if (response.statusCode == 201) {
         print('API request successful');
         var responseString = await response.stream.bytesToString();
@@ -58,12 +59,15 @@ class ApiService {
   }
 
 
+
+
+
+
   Future<List<ComplainModel>> getComplain()async{
 
     try{
 
       var response=await http.get(Uri.parse('https://app.zufaa.tech/our-gazipur/public/api/complain'),);
-
       if(response.statusCode==200){
 
         var complainList= jsonDecode(response.body);

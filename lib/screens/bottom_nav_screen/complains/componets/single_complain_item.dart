@@ -14,6 +14,7 @@ class SingleComplainItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    print('My Picture :    ${complainModel.pictures}');
     return InkWell(
       onTap: (){
         nextPage(context: context,page:  ComplainDetailScreen(complainModel: complainModel,));
@@ -24,7 +25,7 @@ class SingleComplainItem extends StatelessWidget {
         child: Stack(
           children: [
              CustomNetworkImage(
-                image: complainModel.pictures.toString(),
+                image:"https://app.zufaa.tech/our-gazipur/public/${complainModel.pictures.toString()}",
                 height: 200,
                 width: double.infinity,
               ),

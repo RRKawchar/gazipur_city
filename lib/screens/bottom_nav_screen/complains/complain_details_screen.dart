@@ -33,7 +33,7 @@ class ComplainDetailScreen extends StatelessWidget {
             ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: CustomNetworkImage(
-                    image: complainModel.pictures.toString(),
+                    image: "https://app.zufaa.tech/our-gazipur/public/${complainModel.pictures}",
                     height: 200,
                     width: size.width)),
             const SizedBox(
@@ -73,7 +73,7 @@ class ComplainDetailScreen extends StatelessWidget {
               height: 10,
             ),
             CustomText(
-              text: "ঠিকানাঃ ${complainModel.area}",
+              text: "ঠিকানাঃ ${complainModel.location}",
               fontFamily: "Sharif",
             ),
             const SizedBox(

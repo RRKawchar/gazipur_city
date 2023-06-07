@@ -30,7 +30,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
   String selectedItem = "রাস্তায় অবনতি";
   String selectedWard = '১';
 
-  final TextEditingController addressController=TextEditingController();
+  final TextEditingController locationController=TextEditingController();
   final TextEditingController opinionController=TextEditingController();
 
   @override
@@ -86,7 +86,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
               const SizedBox(height: 12.0),
 
                CustomTextField(
-                 controller: addressController,
+                 controller: locationController,
                 title: 'ঠিকানা',
                 hintText: 'আপনার ঠিকানা লিখুন....',
               ),
@@ -102,10 +102,12 @@ class _ServicesScreenState extends State<ServicesScreen> {
                   const Spacer(),
                   InkWell(
                     onTap: () async{
+
+                      print("Riyazur Rohman Kawchar");
                       await ApiService.instance.complainData(
                           category: selectedItem,
                           ward: selectedWard,
-                          address: addressController.text,
+                          location: locationController.text,
                           opinion: opinionController.text,
                           imageBytes: _file!,
                           userId: '45',

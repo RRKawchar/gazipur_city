@@ -1,3 +1,5 @@
+
+
 import 'dart:convert';
 
 List<ComplainModel> complainModelFromJson(String str) => List<ComplainModel>.from(json.decode(str).map((x) => ComplainModel.fromJson(x)));
@@ -9,9 +11,10 @@ class ComplainModel {
   String uuid;
   String category;
   String ward;
-  String? area;
-  String? road;
-  String? house;
+  dynamic area;
+  dynamic road;
+  dynamic house;
+  String location;
   String description;
   String userId;
   String? pictures;
@@ -26,6 +29,7 @@ class ComplainModel {
     this.area,
     this.road,
     this.house,
+    required this.location,
     required this.description,
     required this.userId,
     this.pictures,
@@ -41,6 +45,7 @@ class ComplainModel {
     area: json["area"],
     road: json["road"],
     house: json["house"],
+    location: json["location"],
     description: json["description"],
     userId: json["user_id"],
     pictures: json["pictures"],
@@ -56,6 +61,7 @@ class ComplainModel {
     "area": area,
     "road": road,
     "house": house,
+    "location": location,
     "description": description,
     "user_id": userId,
     "pictures": pictures,

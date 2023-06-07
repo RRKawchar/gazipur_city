@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:our_gazipur/utils/colors.dart';
 import 'package:our_gazipur/widgets/shimmer_loading_widget.dart';
 
 class CustomNetworkImage extends StatelessWidget {
